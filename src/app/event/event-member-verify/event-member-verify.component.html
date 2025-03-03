@@ -1,0 +1,18 @@
+<div class="events__wrapper-verify">
+  <div class="events__wrapper-verify-content">
+    <form class="events__wrapper-verify-form" [formGroup]="saveEventAttendingMobileVerify"
+      (ngSubmit)="saveVerifyForm()">
+      <div class="events__wrapper-verify-form__group">
+        <input type="tel" id="mobile" name="mobile" placeholder="Mobile / Email" id="mobile" name="mobile"
+          formControlName="mobile" placeholder="Enter Mobile No." [ngClass]="{
+            'required': isInvalidError(
+                saveEventAttendingMobileVerifyControls['mobile'].errors
+            )
+          }">
+      </div>
+      <div class="events__wrapper-verify-form__group">
+        <button type="submit" id="cta" name="cta">Continue</button>
+      </div>
+    </form>
+  </div>
+</div>

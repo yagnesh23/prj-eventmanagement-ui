@@ -1,0 +1,44 @@
+<div class="event-registration__wrapper-verify">
+    <div class="event-registration__wrapper-verify__content">
+        <div class="event-registration__wrapper-verify__content-upper">
+            <div class="event-registration__wrapper-verify__content-redirect">
+                <a (click)="redirectBackToInfo()">
+                    <svg width="43" height="38" viewBox="0 0 43 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_1_577)">
+                            <path d="M8.95834 19H34.0417" stroke="white" stroke-width="3" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M8.95834 19L19.7083 28.5" stroke="white" stroke-width="3" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M8.95834 19L19.7083 9.5" stroke="white" stroke-width="3" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_1_577">
+                                <rect width="43" height="38" fill="white" />
+                            </clipPath>
+                        </defs>
+                    </svg>
+                </a>
+            </div>
+            <div class="event-registration__wrapper-verify__content-title">Verify yourself!</div>
+            <form class="event-registration__wrapper-verify__content-form" [formGroup]="saveEventAttendingMobileVerify"
+                (ngSubmit)="saveVerifyForm()">
+                <div class="event-registration__wrapper-verify__content-form__group">
+                    <input type="text" id="mobile" name="mobile" formControlName="mobile" placeholder="Enter Mobile No."
+                        [ngClass]="{
+            'required': isInvalidError(
+                saveEventAttendingMobileVerifyControls['mobile'].errors
+            )
+          }">
+                    <app-common-error-message [submitted]="submitted"
+                        [formControlErrors]="saveEventAttendingMobileVerifyControls"
+                        [formName]="'mobile'"></app-common-error-message>
+                </div>
+            </form>
+        </div>
+        <div class="event-registration__wrapper-verify__content-lower">
+            <button (click)="saveVerifyForm()"
+                class="event-registration__wrapper-verify__content-action">Submit</button>
+        </div>
+    </div>
+</div>

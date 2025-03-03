@@ -1,0 +1,131 @@
+<div class="event-registration__wrapper-details">
+  <div class="event-registration__wrapper-details__content">
+    <div class="event-registration__wrapper-details__content-upper">
+      <div class="event-registration__wrapper-details__content-redirect">
+        <a (click)="redirectBackToVerify()">
+          <svg width="43" height="38" viewBox="0 0 43 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_1_577)">
+              <path d="M8.95834 19H34.0417" stroke="white" stroke-width="3" stroke-linecap="round"
+                stroke-linejoin="round" />
+              <path d="M8.95834 19L19.7083 28.5" stroke="white" stroke-width="3" stroke-linecap="round"
+                stroke-linejoin="round" />
+              <path d="M8.95834 19L19.7083 9.5" stroke="white" stroke-width="3" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </g>
+            <defs>
+              <clipPath id="clip0_1_577">
+                <rect width="43" height="38" fill="white" />
+              </clipPath>
+            </defs>
+          </svg>
+        </a>
+      </div>
+      <div class="event-registration__wrapper-details__content-title">Register yourself!</div>
+      <form class="event-registration__wrapper-details__content-form" [formGroup]="saveEventAttendingPersonDetails"
+        (ngSubmit)="saveRegisterForm()">
+        <div class="event-registration__wrapper-details__content-form__group">
+          <input type="text" name="firstName" id="firstName" formControlName="firstName" placeholder="First Name: Jigar"
+            [ngClass]="{
+          'required': isInvalidError(
+            saveEventAttendingPersonDetailsControls['firstName'].errors
+          )
+        }">
+          <app-common-error-message [submitted]=" submitted"
+            [formControlErrors]="saveEventAttendingPersonDetailsControls"
+            [formName]="'firstName'"></app-common-error-message>
+        </div>
+        <div class="event-registration__wrapper-details__content-form__group">
+          <input type="text" name="middleName" id="middleName" formControlName="middleName"
+            placeholder="Middle Name: Hashmukh" [ngClass]="{
+          'required': isInvalidError(
+            saveEventAttendingPersonDetailsControls['middleName'].errors
+          )
+        }">
+          <app-common-error-message [submitted]="submitted"
+            [formControlErrors]="saveEventAttendingPersonDetailsControls"
+            [formName]="'middleName'"></app-common-error-message>
+        </div>
+        <div class="event-registration__wrapper-details__content-form__group">
+          <input type="text" name="lastName" id="lastName" formControlName="lastName" placeholder="Last Name: Panchal"
+                 [ngClass]="{
+          'required': isInvalidError(
+            saveEventAttendingPersonDetailsControls['lastName'].errors
+          )
+        }">
+          <app-common-error-message [submitted]="submitted"
+                                    [formControlErrors]="saveEventAttendingPersonDetailsControls"
+                                    [formName]="'lastName'"></app-common-error-message>
+        </div>
+        <div class="event-registration__wrapper-details__content-form__group">
+          <input type="text" name="email" id="email" formControlName="email" placeholder="Email: aakashshah@gmail.com"
+                 [ngClass]="{
+          'required': isInvalidError(
+            saveEventAttendingPersonDetailsControls['email'].errors
+          )
+        }">
+          <app-common-error-message [submitted]="submitted"
+                                    [formControlErrors]="saveEventAttendingPersonDetailsControls"
+                                    [formName]="'email'"></app-common-error-message>
+        </div>
+        <div class="event-registration__wrapper-details__content-form__group">
+          <input type="text" id="dob" name="dob" formControlName="DOB" #DOB placeholder="Enter DOB: 14/01/2024"
+            (change)="changeDob(DOB.value)" mask="d0/M0/0000" [leadZeroDateTime]="true" [ngClass]="{
+          'required': isInvalidError(
+            saveEventAttendingPersonDetailsControls['DOB'].errors
+          )
+        }">
+          <app-common-error-message [submitted]="submitted"
+            [formControlErrors]="saveEventAttendingPersonDetailsControls" [formName]="'DOB'"></app-common-error-message>
+        </div>
+        <div class="event-registration__wrapper-details__content-form__group">
+          <form>
+            <script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_OF8aUKXvkCAjWS"
+              async> </script>
+          </form>
+          <div class="event-registration__wrapper-details__content-form__group-toggle">
+            <span>
+              Are you attending sabha ?</span>
+            <label class="switch">
+              <input type="checkbox" [checked]="areYouAttendingSabha"
+                (click)="areYouAttendingSabha = !areYouAttendingSabha">
+              <span class="slider"></span>
+            </label>
+          </div>
+
+        </div>
+        <div class="event-registration__wrapper-details__content-form__group" *ngIf="!areYouAttendingSabha">
+          <input type="text" id="refName" name="refName" formControlName="refName"
+            placeholder="Reference Name : Jatin Chauhan" [ngClass]="{
+          'required': isInvalidError(
+            saveEventAttendingPersonDetailsControls['refName'].errors
+          )
+        }">
+          <app-common-error-message [submitted]="submitted"
+            [formControlErrors]="saveEventAttendingPersonDetailsControls"
+            [formName]="'refName'"></app-common-error-message>
+        </div>
+        <!-- @for (item of sabhaList; track item) { -->
+        <div class="event-registration__wrapper-details__content-form__group" *ngIf="areYouAttendingSabha">
+          <label *ngIf="saveEventAttendingPersonDetailsControls['sabhaId'].value === null" for="sabhaId"
+            class="sabhaLabel">Sabha</label>
+          <select class="form-select form-select-lg mb-3" id="sabhaId" name="sabhaId" formControlName="sabhaId"
+            [ngClass]="{
+          'required': isInvalidError(
+            saveEventAttendingPersonDetailsControls['sabhaId'].errors
+          )
+        }">
+            <option *ngFor="let item of sabhaList" [value]="item.id">{{item.title}}</option>
+          </select>
+          <app-common-error-message [submitted]="submitted"
+            [formControlErrors]="saveEventAttendingPersonDetailsControls"
+            [formName]="'sabhaId'"></app-common-error-message>
+        </div>
+        <!-- } -->
+      </form>
+    </div>
+    <div class="event-registration__wrapper-details__content-lower">
+      <button (click)="saveRegisterForm()" class="event-registration__wrapper-details__content-action">Register
+        now</button>
+    </div>
+  </div>
+</div>

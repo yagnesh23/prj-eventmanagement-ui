@@ -1,0 +1,351 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
+
+$color_1: #000;
+$color_2: #f39c12;
+$background-color_1: var(--darkgray);
+$background-color_2: #34495e;
+
+root {
+  --background-gradient: linear-gradient(178deg, #ffff33 10%, #3333ff);
+  --gray: #34495e;
+  --darkgray: #2c3e50;
+}
+
+.event-registration {
+  &__wrapper {
+
+    &-details,
+    &-verify,
+    &-existed-member {
+      &::before {
+        content: "";
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        // background-image: url("../../../assets/images/ellipse2.png");
+      }
+      &__content {
+        padding: 20px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        // justify-content: space-between;
+        height: 90vh;
+
+        &-redirect {
+          // margin-top: 2rem;
+          padding: 0 0.5rem;
+          cursor: pointer;
+        }
+
+        &-title {
+          font-size: 28px;
+          line-height: 32px;
+          font-weight: bold;
+          margin-top: 1rem;
+          margin-bottom: 1rem;
+        }
+
+        &-sub-title {
+          font-size: 18px;
+          line-height: 22px;
+          font-weight: 100;
+        }
+
+        &-form {
+          margin-top: 2rem;
+
+          &__group {
+            margin-bottom: 1.2rem;
+            position: relative;
+            background-color: white;
+
+
+            .switch {
+              font-size: 17px;
+              position: relative;
+              display: inline-block;
+              width: 3.5em;
+              height: 2em;
+
+              input {
+                opacity: 0;
+                width: 0;
+                height: 0;
+
+                &:checked {
+                  &+.slider {
+                    background: #0974f1;
+
+                    &:before {
+                      transform: translateX(1.6em);
+                    }
+                  }
+                }
+
+                &:focus {
+                  &+.slider {
+                    box-shadow: 0 0 1px #0974f1;
+                  }
+                }
+              }
+            }
+
+            &-toggle {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              padding: 0px 10px;
+            }
+
+            .slider {
+              position: absolute;
+              cursor: pointer;
+              inset: 0;
+              background: #eaeaea;
+              border-radius: 50px;
+              transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+              &:before {
+                position: absolute;
+                content: "";
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 2em;
+                width: 2em;
+                inset: 0;
+                background-color: white;
+                border-radius: 50px;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+                transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+              }
+            }
+
+
+            input,
+            select {
+              width: -webkit-fill-available;
+              background-color: transparent;
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              padding: 16px 24px;
+              gap: 10px;
+              font-size: 16px;
+              line-height: 20px;
+              color: black;
+              border: 1px solid #d1d2d4;
+              border-radius: 100px;
+              outline: 0px;
+              position: relative;
+
+              &.required {
+                border-color: #ff5252;
+              }
+            }
+
+            .sabhaLabel {
+              position: absolute;
+              top: 50%;
+              left: 24px;
+              transform: translateY(-50%);
+              color: #757575;
+            }
+          }
+        }
+
+        &-action {
+          width: 100%;
+          margin-top: 1rem;
+          background: white;
+          border-color: #000;
+          color: black;
+          height: 50px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 16px;
+          line-height: 20px;
+          font-weight: 600;
+          border-radius: 50px;
+          cursor: pointer;
+
+          /* SMARTPHONES POTRAIT */
+          @media only screen and (max-width: 480px) {
+            margin-bottom: 1.2rem;
+          }
+        }
+      }
+    }
+
+    &-thank_you {
+      width: 90%;
+      height: auto;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      color: #002c45;
+      z-index: 9999;
+      border-radius: 18px;
+      overflow-y: auto;
+      overflow-x: hidden;
+
+      &::-webkit-scrollbar {
+        width: 0.2rem;
+      }
+
+      &::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: darkgrey;
+        border-radius: 12px;
+      }
+
+      &__overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgb(0, 0, 0, 0.4);
+        backdrop-filter: blur(3px);
+        overflow: hidden;
+        touch-action: none;
+        z-index: 999;
+      }
+
+      &__content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        height: auto;
+
+        &-upper {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+
+        &-close {
+          cursor: pointer;
+          position: absolute;
+          top: 15px;
+          right: 15px;
+        }
+
+        &-title {
+          font-size: 28px;
+          line-height: 32px;
+          font-weight: 700;
+          text-align: center;
+          margin: 6px 0px;
+          font-family: "Plus Jakarta Sans", sans-serif;
+
+          span {
+            display: block;
+          }
+        }
+
+        &-sub-title {
+          font-size: 18px;
+          line-height: 22px;
+          font-weight: 500;
+          text-align: center;
+          margin: 1.5rem 0;
+
+          span {
+            display: block;
+            font-weight: 600;
+          }
+        }
+
+        &-info {
+          text-align: center;
+          margin: 2rem 0;
+
+          &::before {
+            margin-top: -1.2rem;
+          }
+
+          &::after {
+            margin-top: 1.2rem;
+          }
+
+          &::after,
+          &::before {
+            content: "";
+            position: absolute;
+            width: 80%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #09537d30;
+            height: 1px;
+          }
+
+          &__details {
+            font-size: 22px;
+            line-height: 26px;
+            font-weight: 500;
+
+            &:not(:first-child) {
+              margin-top: 1rem;
+            }
+          }
+
+          &__time {
+            margin-top: 1rem;
+          }
+        }
+
+        &-action {
+          margin-bottom: 20px;
+          width: 185px;
+          height: 48px;
+          background-color: #002c45;
+          color: black;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border: 0px;
+          border-radius: 50px;
+        }
+      }
+
+      /* SMARTPHONES POTRAIT */
+      @media only screen and (max-width: 480px) {
+        position: fixed;
+
+        &__overlay {
+          position: fixed;
+        }
+      }
+    }
+
+    &-details {
+      color: #000;
+      background-image: url("../../../assets/images/bg2.svg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 100%;
+    }
+  }
+}
+
+::ng-deep {
+  .text-danger {
+    padding-left: 1rem;
+    padding-top: 0.5rem;
+    color: #ff5252;
+  }
+}

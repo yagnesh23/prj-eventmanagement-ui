@@ -1,0 +1,8 @@
+import * as Lint from "tslint";
+import * as ts from "typescript";
+
+export declare class Rule extends Lint.Rules.AbstractRule {
+    static metedata: Lint.IRuleMetadata;
+    static FAILURE_STRING(maxCount: number): string;
+    apply(sourceFile: ts.SourceFile): Lint.RuleFailure[];
+}

@@ -1,0 +1,21 @@
+export interface RegisteredMemberResponse {
+    firstName: string,
+    lastName: string,
+    gender: string,
+    mobile: string,
+    email: string,
+    dob: string,
+    regId: number,
+    register: number,
+    eventId: number,
+    eventName: number,
+    sabhaId: number,
+    mandalId: number,
+    emailSentFailedMsg: number,
+    refName: string,
+    memberId: number,
+    refererCode: string,
+    link: string,
+    token: string,
+    regDate: string
+}

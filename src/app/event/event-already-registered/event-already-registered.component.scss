@@ -1,0 +1,59 @@
+.events__wrapper-register__successfull {
+  display: flex;
+  justify-content: center;
+}
+.events__wrapper-register__successfull-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.events__wrapper-register__successfull-content p {
+  font-family: "Satoshi-Bold";
+  font-size: 20px;
+  line-height: 28px;
+}
+.loader__overlay {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+  top: 0;
+  left: 0;
+  cursor: none;
+}
+.loader {
+  display: block;
+  --height-of-loader: 14px;
+  --loader-color: #ffffff;
+  width: 18rem;
+  height: var(--height-of-loader);
+  border-radius: 30px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+}
+.loader::before {
+  content: "";
+  position: absolute;
+  background: var(--loader-color);
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  border-radius: 30px;
+  animation: moving 1s ease-in-out infinite;
+}
+@keyframes moving {
+  50% {
+    width: 100%;
+  }
+  100% {
+    width: 0;
+    right: 0;
+    left: unset;
+  }
+}

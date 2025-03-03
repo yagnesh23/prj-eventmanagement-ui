@@ -1,0 +1,40 @@
+.event-registration {
+  position: relative;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 375px;
+  height: 90vh;
+  margin: 0 auto;
+  border-radius: 16px;
+  font-family: "Inter", sans-serif;
+  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
+  color: white;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  &::-webkit-scrollbar {
+    width: 0.2rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    border-radius: 12px;
+  }
+
+  &__wrapper {
+    height: 100%;
+  }
+
+  /* SMARTPHONES POTRAIT */
+  @media only screen and (max-width: 480px) {
+    width: auto;
+    height: 100vh;
+    margin: 0;
+    border-radius: 0px;
+    box-shadow: unset;
+  }
+}

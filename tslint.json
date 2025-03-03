@@ -1,0 +1,185 @@
+{
+  "defaultSeverity": "error",
+  "rulesDirectory": ["node_modules/codelyzer", "src/rules/"],
+  "extends": ["tslint-etc", "rxjs-tslint-rules"],
+  "rules": {
+    "array-type": [true, "generic"],
+    "await-promise": [
+      true,
+      "Themable",
+      "Themable",
+      "ElementFinder",
+      "ElementArrayFinder",
+      "AlertPromise"
+    ],
+    "callable-types": true,
+    "class-name": true,
+    "encoding": true,
+    "file-name-casing": [true, "kebab-case"],
+    "forin": true,
+    "import-blacklist": [true, "rxjs/Rx"],
+    "interface-name": [true, "never-prefix"],
+    "interface-over-type-literal": true,
+    "label-position": true,
+    "max-classes-per-file": [true, 1],
+    "max-file-line-count": [true, 6000],
+    "max-interface-per-file": [true, 1],
+    "member-access": false,
+    "member-ordering": [
+      true,
+      {
+        "order": [
+          "static-filed",
+          "instance-filed",
+          "static-method",
+          "instance-method"
+        ]
+      }
+    ],
+    "no-arg": true,
+    "no-async-without-await": true,
+    "no-bitwise": true,
+    "no-boolean-literal-compare": true,
+    "no-consecutive-blank-lines": true,
+    "no-console": [true, "debug", "info", "time", "timeEnd", "trace"],
+    "no-construct": true,
+    "no-debugger": true,
+    "no-duplicate-variable": true,
+    "no-empty": [true, "allow-empty-functions"],
+    "no-emptyinterface": true,
+    "no-eval": true,
+    "no-inferrable-types": [true, "ignore-params"],
+    "no-magic-numbers": true,
+    "no-return-await": true,
+    "no-shadowed-variable": true,
+    "no-string-literal": false,
+    "no-string-throw": true,
+    "no-switch-case-fall-through": true,
+    "no-var-keyword": true,
+    "object-literal-sort-keys": false,
+    "prefer-const": true,
+    "prefer-object-spread": true,
+    "prefer-template": [true, "allow-single-concat"],
+    "radix": true,
+    "triple-equals": [true, "allow-null-check"],
+    "unified-signatures": true,
+    "ordered-imports": [
+      true,
+      {
+        "module-source-path": "full",
+        "grouped-imports": true,
+        "import-sources-order": "any",
+        "named-imports-order": "any",
+        "groups": [
+          {
+            "name": "angular",
+            "match": "^@angular.*",
+            "order": 10
+          },
+          {
+            "name": "rxjs",
+            "match": "^rxjs.*",
+            "order": 15
+          },
+          {
+            "name": "app packages",
+            "match": "^@app/",
+            "order": 40
+          },
+          {
+            "name": "core packages",
+            "match": "^@core/",
+            "order": 50
+          },
+          {
+            "name": "shared packages",
+            "match": "^@shared/",
+            "order": 60
+          },
+          {
+            "name": "relative directories",
+            "match": "^[\\./\\.\\./|\\.\\./].*",
+            "order": 70
+          },
+          {
+            "name": "current directories",
+            "match": "^\\./.*",
+            "order": 80
+          },
+          {
+            "name": "extra",
+            "match": ".*",
+            "order": 90
+          }
+        ]
+      }
+    ],
+    "typedef": [true, "call-signature", "parameter", "property-declaration"],
+    "comment-type": [true, "singleline", "doc"],
+    "comment-format": [true, "check-space", "allow-trailing-lowecase"],
+    "enforce-model-file-name-matches-model": true,
+    "variable-name": {
+      "options": [
+        "ban-keyword",
+        "require-const-for-all-caps",
+        "check-format",
+        "allow-leading-underscore"
+      ]
+    },
+    "run-rules-based-on-file-type": [
+      true,
+      {
+        ".*\\.spec\\.ts": {
+          "prefer-to-have-been-called-with": true,
+          "no-to-be-truthy-falsy-statement": true
+        },
+        ".(?<!.*[\\.spec\\.column\\-defs|\\.service]).ts": {
+          "no-any": true
+        },
+        ".*\\.service\\.ts": {
+          "no-any": true
+        }
+      }
+    ],
+    "ban-types": [
+      true,
+      ["String", "Use string instead"],
+      ["Number", "Use number instead"],
+      ["Boolean", "Use boolean instead"],
+      ["Undefined", "Use undefined instead"]
+    ],
+    "component-class-suffix": true,
+    "component-max-inline-declarations": true,
+    "component-selector": [true, "element", "app", "kebab-case"],
+    "contextual-lifecycle": true,
+    "directive-class-suffix": true,
+    "directive-selector": [true, "attribute", "app", "camelCase"],
+    "no-attribute-decorator": true,
+    "no-conflicting-lifecycle": true,
+    "no-forward-ref": true,
+    "no-host-metadata-property": true,
+    "no-input-rename": true,
+    "no-inputs-metadata-property": true,
+    "no-lifecycle-call": true,
+    "no-output-native": true,
+    "no-output-on-prefix": true,
+    "no-output-rename": true,
+    "no-outputs-metadata-property": true,
+    "no-pipe-impure": true,
+    "no-queries-metadata-property": true,
+    "no-unused-css": true,
+    "prefer-output-readonly": true,
+    "template-banana-in-box": true,
+    "template-conditional-complexity": [true, 20],
+    "template-cyclomatic-complexity": [true, 60],
+    "template-no-negated-async": true,
+    "template-use-track-by-function": true,
+    "use-component-selector": true,
+    "use-component-view-encapsulation": true,
+    "use-lifecycle-interface": true,
+    "use-pipe-transform-interface": true
+  },
+  "linterOptions": {
+    "exclude": ["node_modules/**/*"]
+  }
+}

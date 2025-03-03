@@ -1,0 +1,20 @@
+<div class="events__wrapper-member">
+  <div class="events__wrapper-member__back" (click)="redirectBackToVerify()">
+    <img src="assets/svg/back-arrow.svg" alt="" srcset="">
+  </div>
+  <div class="events__wrapper-member-content">
+    <form class="events__wrapper-member-form">
+      <div class="events__wrapper-member-form__group">
+        <div class="events__wrapper-member-form__group-member__info">
+          <h4 class="events__wrapper-member-form__group-member__info-title">{{memberPersonalInfo.firstName}}
+            {{memberPersonalInfo.lastName}}</h4>
+          <h6 class="events__wrapper-member-form__group-member__info-sub-title">{{memberPersonalInfo.mandal}} -
+            {{memberPersonalInfo.sabha}}
+          </h6>
+        </div>
+      </div>
+      <div class="events__wrapper-member-form__group">
+        <button type="submit" id="cta" name="cta" (click)="saveExistedMemberForm()">{{btnText}}</button>
+      </div>
+    </form>
+  </div>

@@ -1,0 +1,78 @@
+<div *ngIf="
+    submitted &&
+    formControlErrors[formName]?.errors &&
+    (formControlErrors[formName].dirty || formControlErrors[formName].touched)
+  " class="invalid-feedback" [ngClass]="{ 'd-block': submitted && formControlErrors[formName].errors }">
+  <div class="text-danger" *ngIf="formControlErrors[formName].errors['required']">
+    This field is required.
+  </div>
+  <div class="text-danger" *ngIf="formControlErrors[formName].errors['email']">
+    Email must be a valid email address.
+  </div>
+  <div class="text-danger" *ngIf="formControlErrors[formName].errors['pan']">
+    Please enter valid pan no.
+  </div>
+  <div class="text-danger" *ngIf="formControlErrors[formName].errors['accountNo']">
+    Please enter valid Bank account no.
+  </div>
+  <div class="text-danger" *ngIf="formControlErrors[formName].errors['ifscCode']">
+    Please enter valid IFSC Code.
+  </div>
+  <div class="text-danger" *ngIf="formControlErrors[formName].errors['gst']">
+    Please enter valid GST no.
+  </div>
+  <div class="text-danger" *ngIf="formControlErrors[formName].errors['pincode']">
+    Please enter valid Pincode.
+  </div>
+  <div class="text-danger" *ngIf="formControlErrors[formName].errors['numeric']">
+    Must be a valid number
+  </div>
+  <div class="text-danger" *ngIf="formControlErrors[formName].errors['alpha']">
+    Only alphabets are allowed.
+  </div>
+  <div class="text-danger" *ngIf="formControlErrors[formName].errors['alphaNumeric']">
+    "Only alphabet and numbers are allowed.
+  </div>
+  <div class="text-danger" *ngIf="formControlErrors[formName].errors['lowerCase']">
+    "Only lowercase is allowed.
+  </div>
+  <div class="text-danger" *ngIf="formControlErrors[formName].errors['upperCase']">
+    "Only uppercase is allowed.
+  </div>
+  <div class="text-danger" *ngIf="formControlErrors[formName].errors['zipcode']">
+    Zipcode must be at least 6 digits.
+  </div>
+  <div class="text-danger" *ngIf="formControlErrors[formName].errors['url']">
+    Please enter valid Url
+  </div>
+  <div class="text-danger" *ngIf="
+      formControlErrors[formName].errors['minLength']
+    ">
+    {{ formName | titlecase }} must be a at least
+    {{ (formControlErrors[formName]?.errors)!["minLength"]!["refValues"]![1] }}
+    Digit.
+  </div>
+  <div class="text-danger" *ngIf="formControlErrors[formName].errors['maxLength']">
+    {{ formName | titlecase }} must be a at least
+    {{ (formControlErrors[formName]?.errors)!["maxLength"]!["refValues"]![1] }}
+    Digit.
+  </div>
+  <div class="text-danger" *ngIf="formControlErrors[formName].errors['compare']">
+    {{ formName }} must be same.
+  </div>
+  <div class="text-danger" *ngIf="formControlErrors[formName].errors['extension']">
+    Only PDF file are allowed.
+  </div>
+  <div class="text-danger" *ngIf="formControlErrors[formName].errors['fileSize']">
+    File Size should be less than 5mb.
+  </div>
+  <div class="text-danger" *ngIf="formControlErrors[formName].errors['custom']">
+    {{ formControlErrors[formName].errors["custom"] | titlecase }}.
+  </div>
+  <div class="text-danger" *ngIf="formControlErrors[formName].errors['isTrue']">
+    {{ formControlErrors[formName].errors["text"] }}.
+  </div>
+  <div class="text-danger" *ngIf="formControlErrors[formName].errors['different']">
+    {{ customMessage }}.
+  </div>
+</div>
