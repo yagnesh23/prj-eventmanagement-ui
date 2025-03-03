@@ -1,11 +1,11 @@
 export interface SaveDetailsRequest {
-  dob: string;
-  email: string;
+  dateOfBirth: string;
+  emailId: string;
   firstName: string;
-  gender: string;
+  moiddleName: string;
   lastName: string;
-  mobile: string;
-  sabhaId: number;
+  mobileNo: string;
   refName: string;
   refererCode: string;
+  fullName: string
 }

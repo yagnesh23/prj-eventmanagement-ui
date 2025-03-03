@@ -35,13 +35,9 @@ export class EventRegistrationThankYouScreenComponent
   }
 
   ngOnInit(): void {
-    this._activatedRoute.queryParams.subscribe((params) => {
-      this.eventId = params['id'];
-      this.uuid = params['uuid'];
-      this.memberId = params['memberId'];
-      this.refer = params['refer'];
-    });
-    this.eventInfo = this.ls.get(SECURELS_MODULE_NAME.EVENT_INFO);
+    this.eventInfo = {
+      eventStartDate: '2025-03-17 08:30:00',
+        } as any;
     if (this.ls.get(SECURELS_MODULE_NAME.REGISTERED_MEMBER_INFO)) {
       this.registeredMemberInfo = this.ls.get(
         SECURELS_MODULE_NAME.REGISTERED_MEMBER_INFO

@@ -10,14 +10,7 @@ const routes: Routes = [
       import('./event-registration/event-registration.module').then(
         (event) => event.EventRegistrationModule
       ),
-  },
-  {
-    path: MODULES_NAME.EVENTS,
-    loadChildren: () =>
-      import('./event/event.module').then(
-        (events) => events.EventModule
-      ),
-  },
+  }
 ];
 
 @NgModule({

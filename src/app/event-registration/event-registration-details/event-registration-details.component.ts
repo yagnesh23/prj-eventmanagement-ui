@@ -8,7 +8,7 @@ import { BaseComponent, EVENT_REGISTRATION_MODULE } from '@shared/index';
 import {
   EventRegistrationService,
   GetEventDetailsResponse,
-  GetMasterResponse,
+  GetMasterResponse, RegisteredMemberResponse,
   SaveDetailsRequest,
   VaktaDetailsConfig,
 } from '..';
@@ -50,16 +50,6 @@ export class EventRegistrationDetailsComponent
 
   ngOnInit(): void {
     this.initFormGroup();
-    this._activatedRoute.queryParams.subscribe((params) => {
-      this.eventId = params['id'];
-      this.uuid = params['uuid'];
-      this.refer = params['refer'];
-      this.saveEventAttendingPersonDetailsControls['mobile'].setValue(
-        params['mobile']
-      );
-      this.getMaster();
-      this.getEventInfo();
-    });
   }
 
   get saveEventAttendingPersonDetailsControls(): {
@@ -78,8 +68,9 @@ export class EventRegistrationDetailsComponent
       queryParams: { id: this.eventId, uuid: this.uuid },
     });
   }
+
   public changeDob(d: any): void {
-    this.saveEventAttendingPersonDetailsControls['DOB'].setValue(d);
+    this.saveEventAttendingPersonDetailsControls['dateOfBirth'].setValue(d);
   }
 
   public saveRegisterForm(): void {
@@ -92,39 +83,20 @@ export class EventRegistrationDetailsComponent
       refererCode: this.refer,
       ...this.saveEventAttendingPersonDetails.value,
     } as SaveDetailsRequest;
-    requestObject.firstName = `${this.saveEventAttendingPersonDetails.value.firstName} ${this.saveEventAttendingPersonDetails.value.middleName}`;
-    requestObject.dob = this.saveEventAttendingPersonDetailsControls[
-      'DOB'
+    requestObject.fullName = `${this.saveEventAttendingPersonDetails.value.firstName} ${this.saveEventAttendingPersonDetails.value.middleName} ${this.saveEventAttendingPersonDetails.value.lastName}`;
+    requestObject.dateOfBirth = this.saveEventAttendingPersonDetailsControls[
+      'dateOfBirth'
     ].value
       .split('/')
       .reverse()
       .join('-');
-    if (this.areYouAttendingSabha) {
-      requestObject.sabhaId =
-        this.saveEventAttendingPersonDetails.value.sabhaId;
-      requestObject.refName = '';
-    } else {
-      requestObject.refName =
-        this.saveEventAttendingPersonDetails.value.refName;
-      requestObject.sabhaId = 0;
-    }
     console.log(requestObject);
     this.detailComponentSubscription.add(
       this._eventRegistrationService
-        .saveDetail(this.eventId, this.uuid, requestObject)
-        .subscribe((response: SaveDetailsRequest) => {
+        .saveDetail(requestObject)
+        .subscribe((response: RegisteredMemberResponse) => {
           this.saveEventAttendingPersonDetails.reset();
-        })
-    );
-  }
-
-  private getMaster(): void {
-    const paramId = 'sabha_id';
-    this.detailComponentSubscription.add(
-      this._eventRegistrationService
-        .getMaster(this.eventId, this.uuid, paramId)
-        .subscribe((response: Array<GetMasterResponse>) => {
-          this.sabhaList = response;
+          this._router.navigate([EVENT_REGISTRATION_MODULE.REDIRECT_THANK_YOU]);
         })
     );
   }
@@ -161,7 +133,8 @@ export class EventRegistrationDetailsComponent
           }),
         ],
       ],
-      mobile: [
+      fullName: [null, []],
+      mobileNo: [
         null,
         [
           RxwebValidators.required(),
@@ -170,26 +143,11 @@ export class EventRegistrationDetailsComponent
           RxwebValidators.maxLength({ value: 10 }),
         ],
       ],
-      email: [null, [RxwebValidators.email()]],
-      DOB: [null, [RxwebValidators.required()]],
-      refName: [null, []],
-      sabhaId: [null, []],
+      emailId: [null, [RxwebValidators.email()]],
+      dateOfBirth: [null, [RxwebValidators.required()]],
+      referenceName: [null, [RxwebValidators.required()]],
+      address: [null, [RxwebValidators.required()]],
     });
-  }
-
-  private getEventInfo(): void {
-    this.detailComponentSubscription.add(
-      this._eventRegistrationService
-        .getEventInfo(this.eventId, this.uuid)
-        .subscribe((response: GetEventDetailsResponse) => {
-          for (let eventConfig of response.eventConfig) {
-            if (eventConfig.paramId === 'invite_msg') {
-              this.address = eventConfig.values;
-            }
-            this.eventDate = response.eventStartDate;
-          }
-        })
-    );
   }
 
   ngOnDestroy(): void {}

@@ -57,70 +57,60 @@
                                     [formName]="'lastName'"></app-common-error-message>
         </div>
         <div class="event-registration__wrapper-details__content-form__group">
-          <input type="text" name="email" id="email" formControlName="email" placeholder="Email: aakashshah@gmail.com"
+          <input type="text" name="mobileNo" id="mobileNo" formControlName="mobileNo" placeholder="Mobile: 9870016677"
                  [ngClass]="{
           'required': isInvalidError(
-            saveEventAttendingPersonDetailsControls['email'].errors
+            saveEventAttendingPersonDetailsControls['mobileNo'].errors
           )
         }">
           <app-common-error-message [submitted]="submitted"
                                     [formControlErrors]="saveEventAttendingPersonDetailsControls"
-                                    [formName]="'email'"></app-common-error-message>
+                                    [formName]="'mobileNo'"></app-common-error-message>
         </div>
         <div class="event-registration__wrapper-details__content-form__group">
-          <input type="text" id="dob" name="dob" formControlName="DOB" #DOB placeholder="Enter DOB: 14/01/2024"
-            (change)="changeDob(DOB.value)" mask="d0/M0/0000" [leadZeroDateTime]="true" [ngClass]="{
+          <input type="text" name="email" id="emailId" formControlName="emailId" placeholder="Email: aakashshah@gmail.com"
+                 [ngClass]="{
           'required': isInvalidError(
-            saveEventAttendingPersonDetailsControls['DOB'].errors
+            saveEventAttendingPersonDetailsControls['emailId'].errors
           )
         }">
           <app-common-error-message [submitted]="submitted"
-            [formControlErrors]="saveEventAttendingPersonDetailsControls" [formName]="'DOB'"></app-common-error-message>
+                                    [formControlErrors]="saveEventAttendingPersonDetailsControls"
+                                    [formName]="'emailId'"></app-common-error-message>
         </div>
         <div class="event-registration__wrapper-details__content-form__group">
-          <form>
-            <script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_OF8aUKXvkCAjWS"
-              async> </script>
-          </form>
-          <div class="event-registration__wrapper-details__content-form__group-toggle">
-            <span>
-              Are you attending sabha ?</span>
-            <label class="switch">
-              <input type="checkbox" [checked]="areYouAttendingSabha"
-                (click)="areYouAttendingSabha = !areYouAttendingSabha">
-              <span class="slider"></span>
-            </label>
-          </div>
-
+          <input type="text" id="dateOfBirth" name="dateOfBirth" formControlName="dateOfBirth" #dateOfBirth placeholder="Enter DOB: 14/01/2024"
+            (change)="changeDob(dateOfBirth.value)" mask="d0/M0/0000" [leadZeroDateTime]="true" [ngClass]="{
+          'required': isInvalidError(
+            saveEventAttendingPersonDetailsControls['dateOfBirth'].errors
+          )
+        }">
+          <app-common-error-message [submitted]="submitted"
+            [formControlErrors]="saveEventAttendingPersonDetailsControls" [formName]="'dateOfBirth'"></app-common-error-message>
+        </div>
+        <div class="event-registration__wrapper-details__content-form__group">
+        </div>
+        <div class="event-registration__wrapper-details__content-form__group">
+          <input type="text" id="address" name="address" formControlName="address" #address placeholder="Enter Full Address"
+                 [ngClass]="{
+          'required': isInvalidError(
+            saveEventAttendingPersonDetailsControls['address'].errors
+          )
+        }">
+          <app-common-error-message [submitted]="submitted"
+                                    [formControlErrors]="saveEventAttendingPersonDetailsControls" [formName]="'address'"></app-common-error-message>
         </div>
         <div class="event-registration__wrapper-details__content-form__group" *ngIf="!areYouAttendingSabha">
-          <input type="text" id="refName" name="refName" formControlName="refName"
+          <input type="text" id="referenceName" name="referenceName" formControlName="referenceName"
             placeholder="Reference Name : Jatin Chauhan" [ngClass]="{
           'required': isInvalidError(
-            saveEventAttendingPersonDetailsControls['refName'].errors
+            saveEventAttendingPersonDetailsControls['referenceName'].errors
           )
         }">
           <app-common-error-message [submitted]="submitted"
             [formControlErrors]="saveEventAttendingPersonDetailsControls"
-            [formName]="'refName'"></app-common-error-message>
+            [formName]="'referenceName'"></app-common-error-message>
         </div>
-        <!-- @for (item of sabhaList; track item) { -->
-        <div class="event-registration__wrapper-details__content-form__group" *ngIf="areYouAttendingSabha">
-          <label *ngIf="saveEventAttendingPersonDetailsControls['sabhaId'].value === null" for="sabhaId"
-            class="sabhaLabel">Sabha</label>
-          <select class="form-select form-select-lg mb-3" id="sabhaId" name="sabhaId" formControlName="sabhaId"
-            [ngClass]="{
-          'required': isInvalidError(
-            saveEventAttendingPersonDetailsControls['sabhaId'].errors
-          )
-        }">
-            <option *ngFor="let item of sabhaList" [value]="item.id">{{item.title}}</option>
-          </select>
-          <app-common-error-message [submitted]="submitted"
-            [formControlErrors]="saveEventAttendingPersonDetailsControls"
-            [formName]="'sabhaId'"></app-common-error-message>
-        </div>
-        <!-- } -->
       </form>
     </div>
     <div class="event-registration__wrapper-details__content-lower">
