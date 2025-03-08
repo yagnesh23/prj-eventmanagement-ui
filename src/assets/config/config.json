@@ -1,6 +1,6 @@
 {
   "endpointConfiguration": {
-    "event": "http://localhost:8081/",
+    "event": "https://eventmanagement-backend-729819400379.asia-south1.run.app/",
     "uuid": "cil0Uv5dKCVkrRISHplg4A==",
     "imageBaseHref": "https://sampark369.org/"
   }
