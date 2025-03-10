@@ -36,7 +36,7 @@ export class EventRegistrationThankYouScreenComponent
 
   ngOnInit(): void {
     this.eventInfo = {
-      eventStartDate: '2025-03-17 08:30:00',
+      eventStartDate: '2025-03-17 20:30:00',
         } as any;
     if (this.ls.get(SECURELS_MODULE_NAME.REGISTERED_MEMBER_INFO)) {
       this.registeredMemberInfo = this.ls.get(
